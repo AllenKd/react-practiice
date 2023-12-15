@@ -27,8 +27,26 @@ function App(props) {
         setTasks(updatedTasks)
     }
 
+    function deleteTask(id) {
+        console.log(id);
+        const remainingTasks = tasks.filter((task) => id !== task.id)
+        setTasks(remainingTasks)
+    }
+
+    function editTask(id, newName) {
+        const editedTaskList = tasks.map((task) => {
+            if (id === task.id) {
+                return {...task, name: newName}
+            }
+            return task
+        });
+        setTasks(editedTaskList)
+    }
+
     const taskList = props.tasks?.map((task) => <Todo id={task.id} name={task.name} completed={task.completed}
-                                                      key={task.id} toggleTaskCompleted={toggleTaskCompleted}/>)
+                                                      key={task.id} toggleTaskCompleted={toggleTaskCompleted}
+                                                      deleteTask={deleteTask}
+                                                      editTask={editTask}/>)
 
     const tasksNoun = taskList.length === 1 ? "task" : "tasks";
     const headingText = `${taskList.length} ${tasksNoun} remaining`;

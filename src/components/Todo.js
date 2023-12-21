@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 function Todo(props) {
-    console.log(props)
+    // console.log(props)
     const [isEditing, setEditing] = useState(false)
     const [newName, setName] = useState("")
 

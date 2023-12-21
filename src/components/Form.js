@@ -12,7 +12,7 @@ function Form(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // alert("Hello world!");
+        // alert("handle submit");
         props.addTask(name)
         setName("")
     }
